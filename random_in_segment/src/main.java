@@ -12,7 +12,7 @@ public class main {
         System.out.print("Введите верхнюю границу отрезка: ");
         int b = in.nextInt();
 
-        double i = Math.random()*155;
+        double i = (Math.random()*155+5);
 
         if ((int)i > a && (int)i < b) {
             System.out.println("Число " + (int)i + " содержится в диапазоне (" + a + ";" + b + ")");
