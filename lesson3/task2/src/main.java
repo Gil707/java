@@ -1,9 +1,24 @@
+import java.util.Scanner;
+
 public class arrays {
 
     public static void main(String[] args) {
-        int[] ar = new int[10];
 
-        for (int i = 0, n = 2; i < ar.length; i++, n += 2) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите нижнюю границу : ");  // первая цифра
+        int a = sc.nextInt();
+        System.out.println("Введите верхнюю границу : "); // последняя цифра, максимальная
+        int b = sc.nextInt();
+
+        for (int c = a; a < b; c++) {
+            
+        }
+
+
+
+        int[] ar = new int[];
+
+        for (int i = 0, n = 1; i < ar.length; i++, n += 2) {
             ar[i] = n;
             System.out.print(ar[i] + " ");
         }
