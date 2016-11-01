@@ -1,4 +1,4 @@
-public class main {
+﻿public class main {
 
     public static void main(String[] args) {
 
@@ -11,7 +11,7 @@ public class main {
                 if (j == num[i].length - 1) {
                     num[i][j] = num[i][j - 2] * num[i][j - 1];
 
-                    for (int cnt = 0; cnt < i; cnt++) {                     // перебор 3-го элемента, результата для определения совпадений
+                    for (int cnt = 0; cnt < i; cnt++) {                     // перебор 3-го элемента, - результата для определения совпадений
                         if (num[i][j] == num[cnt][j] && i > 0) {
                             if (num[i][j - 1] == num[cnt][j - 1] || num[i][j - 2] == num[i][j - 2])
                                 --i;
