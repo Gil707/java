@@ -13,7 +13,7 @@ public class main {
 
                     for (int cnt = 0; cnt < i; cnt++) {                     // перебор 3-го элемента, результата для определения совпадений
                         if (num[i][j] == num[cnt][j] && i > 0) {
-                            if (num[i][j - 1] == num[cnt][j - 1] || num[i][j - 2] == num[q][j - 2])
+                            if (num[i][j - 1] == num[cnt][j - 1] || num[i][j - 2] == num[i][j - 2])
                                 --i;
                         }
                     }
@@ -32,4 +32,3 @@ public class main {
         }
     }
 }
-
