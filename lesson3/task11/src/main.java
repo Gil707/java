@@ -32,11 +32,11 @@ public class main {
 
             if (i == ar.length - 1) {
                 System.out.println(" ");
-                if (left > right)
+                if (left > right) {
                     System.out.println("Сумма модулей левой половины больше, = " + left);
-                if (right > left)
+                } else if (right > left) {
                     System.out.println("Сумма модулей правой половины больше, = " + right);
-                if (right == left)
+                } else
                     System.out.println("Суммы модулей первой и второй половины равны");
             }
         }
