@@ -8,7 +8,7 @@ import geometry.Shape;
 
 public class Panel extends JPanel {
 
-    private Shape shape;
+    // private Shape shape;
     private java.util.List<Shape> shapes = new ArrayList<Shape>();          // создадим коллекции элементов
 
     public Panel() {
@@ -44,7 +44,6 @@ public class Panel extends JPanel {
         }
 
     }
-
 
     public void setShape(Shape shape) {
         this.shapes.add(shape);
