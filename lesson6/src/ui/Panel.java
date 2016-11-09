@@ -2,12 +2,14 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 import geometry.Shape;
 
 public class Panel extends JPanel {
 
     private Shape shape;
+    private java.util.List<Shape> shapes = new ArrayList<Shape>();          // создадим коллекции элементов
 
     public Panel() {
         //  setBorder(BorderFactory.createLineBorder(Color.white));
@@ -35,15 +37,17 @@ public class Panel extends JPanel {
         g.drawLine(300, 600, 330, 700);
         */
 
-        if(shape != null){
-            shape.paint(g);
+        if(shapes != null){                         // выведем каждый элемент коллекции в канву
+            for (Shape sh : shapes) {
+                sh.paint(g);
+            }
         }
 
     }
 
 
     public void setShape(Shape shape) {
-        this.shape = shape;
+        this.shapes.add(shape);
       //  repaint();
     }
 

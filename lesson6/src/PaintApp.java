@@ -31,17 +31,11 @@ public class PaintApp {
 //        Rectangle rect = new Rectangle(start,end);
 //        panel.setShape(rect);
 
-        Panel panel1 = new Panel();
-        panel.add(panel1);
-        Panel panel2 = new Panel();
-        panel1.add(panel2);
-        Panel panel3 = new Panel();
-        panel2.add(panel3);
-
-        panel3.setShape(new Rectangle(b, c));
-        panel2.setShape(new Triangle(a, b, c));
-        panel1.setShape(new Circle(b, 45));
         panel.setShape(new Circle(b, 80));
+        panel.setShape(new Circle(a, 50));
+        panel.setShape(new Circle(c, 80));
+        panel.setShape(new Triangle(a, b, c));
+        panel.setShape(new Rectangle(a, b));
 
     }
 }
