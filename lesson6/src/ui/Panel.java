@@ -8,7 +8,7 @@ import geometry.Shape;
 
 public class Panel extends JPanel {
 
-    private Shape shape;
+//  private Shape shape;
     private java.util.List<Shape> shapes = new ArrayList<Shape>();          // создадим коллекции элементов
 
     public Panel() {
@@ -22,9 +22,9 @@ public class Panel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-       // super.paintComponent(g);
+//      super.paintComponent(g);    рисуем с помощью paint ниже.
 
-        /*
+        /*  Если в лоб, линиями
         g.drawRect(150, 150, 180, 450);
         g.drawLine(150, 150, 240, 50);
         g.drawLine(240, 50, 330, 150);
@@ -48,7 +48,7 @@ public class Panel extends JPanel {
 
     public void setShape(Shape shape) {
         this.shapes.add(shape);
-      //  repaint();
+//   repaint();               необязательно перерисовывать
     }
 
 
