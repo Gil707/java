@@ -13,9 +13,6 @@ public class app {
 
     private static final String TITLE = "app";
 
-    public static int x, y;
-    public static double s;
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> createUI());
     }
@@ -43,15 +40,14 @@ public class app {
         for (int i = 0; i < 5; i++) {
 
             for (int j = 0; j < 3; j++) {
-                x = (int) (Math.random() * 500);
-                y = (int) (Math.random() * 500);
+               int x = (int) (Math.random() * 500);
+               int y = (int) (Math.random() * 500);
                 ar[j] = new Point(x, y);
             }
 
             Triangle tr = new Triangle(ar[0], ar[1], ar[2]);
-            s = tr.getSq();
 
-            shp.put(s, tr);
+            shp.put(tr.getSq(), tr);
         }
 
         for (Map.Entry<Double, Triangle> item : shp.entrySet()) {
