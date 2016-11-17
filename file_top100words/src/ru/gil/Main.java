@@ -12,12 +12,13 @@ import java.util.stream.Stream;
 
 public class Main {
 
-    private static final String FILE_NAME = "E:\\work\\java\\file_top100words\\2.txt";
+    private static final String FILE_NAME = "D:\\work\\java\\file_top100words\\lt2.txt";
     private static List<String> book = new ArrayList<>();
     private static List<String> pack = new ArrayList<>();
-    private static Map<Integer, String> treeMap = new TreeMap<Integer, String>();
+    private static Map<String, Integer> treeMap = new HashMap<String, Integer>();
+    private static Map<String, Integer> sortedMap = new HashMap<String, Integer>();
     private static int cnt = 0;
-    private static int c = 0;
+    private static int c = 1;
 
 //    public static int searchWord(String message, String word) {
 //        message = message.toLowerCase();
@@ -35,19 +36,32 @@ public class Main {
     public static List divideWords(String s) {
         ArrayList<String> tmp = new ArrayList<String>();
         int i = 0;
-
+        s = s.toLowerCase();
+        s = s.replaceAll("на", " ");
         for (int j = 0; j < s.length(); j++) {
-            if (s.charAt(j) == ' ' || s.charAt(j) == ',' || s.charAt(j) == '.') {
-                if (j > i) {
+            if (s.charAt(j) == ' ' || s.charAt(j) == ',' || s.charAt(j) == '.' || s.charAt(j) == '-' || s.charAt(j) == 'и' || s.charAt(j) == 'в') {
+                if (j > i && s.substring(i, j).length() > 3) {
                     tmp.add(s.substring(i, j));
                 }
                 i = j + 1;
             }
         }
-        if (i < s.length()) {
+        if (i < s.length() && s.substring(i).length() > 3) {
             tmp.add(s.substring(i));
         }
         return tmp;
+    }
+
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+        return map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
     }
 
     public static void main(String[] args) throws IOException {
@@ -57,26 +71,35 @@ public class Main {
 
 
 
-
 //        book.forEach(System.out::println);
 
-
         for (String items: book                 // создаем коллекцию из слов
-             ) {
+                ) {
             pack.addAll(divideWords(items));
         }
+//        System.out.println(pack.get(3466));
 
-        for (int i = 0; i < pack.size(); i++) {
-            for (int j = 0; j < pack.size(); j++) {
-                if (pack.get(i).equals(pack.get(j)))
-                    c++;
+        pack.forEach(item -> {
+//            System.out.println("Слово '" + item +"' : " + Collections.frequency(pack, item) + " раз");
+            if (!treeMap.containsKey(item)) {
+                treeMap.put(item, Collections.frequency(pack, item));
             }
-            treeMap.put(c, pack.get(i));
-            c = 0;
-        }
+        });
 
-        System.out.println(treeMap);
+        sortedMap = sortByValue(treeMap);
+
 //
+//        for (int i = 0; i < pack.size(); i++) {
+//            for (int j = 0; j < pack.size(); j++) {
+//                if (pack.get(i).equals(pack.get(j)))
+//                    c++;
+//            }
+//            treeMap.put(c, pack.get(i));
+//            c = 0;
+//        }
+//
+//        System.out.println(treeMap);
+
 
 //
 //        for (String find : pack) {
@@ -85,11 +108,14 @@ public class Main {
 //            treeMap.put(cnt1, find);
 //        }
 //
-//        for (Map.Entry e : treeMap.entrySet()){
-//
-//            System.out.println(e.getKey()+" "+ e.getValue());
-//
-//        }
+        for (Map.Entry e : sortedMap.entrySet()){
+            if (c <= 50) {
+                System.out.println(c + " : " + e.getKey()+" "+ e.getValue());
+                c++;
+            }
+            else break;
+
+        }
 ////        book.forEach(System.out::println);
 //
 //
