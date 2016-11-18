@@ -2,9 +2,6 @@ package ru.gil;
 
 import java.util.*;
 
-/**
- * Created by Gil on 16-Nov-16.
- */
 public class Main {
 
     private static Map<String, Integer> top = new HashMap<>();
