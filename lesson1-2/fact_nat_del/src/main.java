@@ -27,6 +27,7 @@ public class main {
         res = fact(n - 1) * n;
         return res;
     }
+
     static void delit(int d) {
         for(int i = 1; i <= d; i++) {
             if ((d % i) == 0) {
