@@ -12,6 +12,7 @@ public class Main {
     private static final String FILE_NAME = "D:\\work\\java\\file_top100words\\wp.txt";
     private static Map<String, Integer> sortedMap = new HashMap<String, Integer>();
     private static Map<String, Integer> top = new HashMap<String, Integer>();
+    private static int c = 1;
 
     private static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
         return map.entrySet()
@@ -49,10 +50,7 @@ public class Main {
 
         Files.lines(Paths.get(FILE_NAME), StandardCharsets.UTF_8).forEach(Main::parse);
 
-
         sortedMap = sortByValue(top);
-
-        int c = 1;
 
         for (Map.Entry e : sortedMap.entrySet()) {
             if (c <= 100) {
