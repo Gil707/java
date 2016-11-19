@@ -5,12 +5,6 @@ import java.util.Stack;
 
 public class Main {
 
-    private final char openRound = '(';
-    private final char closeRound = ')';
-    private final char openSquare = '[';
-    private final char closeSquare = ']';
-
-
     public static boolean checkValidate(String str) {
         if (str.isEmpty())
             return true;
