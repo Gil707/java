@@ -13,12 +13,12 @@ public class Main {
     private static final String FILE_NAME = "D:\\work\\java\\file_top100words\\wp.txt";
     private static Map<String, Integer> sortedMap = new HashMap<String, Integer>();
     private static Map<String, Integer> top = new HashMap<String, Integer>();
-    private static int c = 1;
 
     private static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
         return map.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                .limit(100)
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         Map.Entry::getValue,
@@ -61,12 +61,7 @@ public class Main {
 //
 //        }
 
-        sortedMap.forEach((K, V) -> {
-            if (c <= 100) {
-                System.out.println(K + " : " + V);
-                c++;
-            }
-        });
+        sortedMap.forEach((K, V) -> System.out.println(K + " : " + V));
 
         timeout = System.currentTimeMillis() - timeout;
 
