@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.KeyStore;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -52,13 +53,20 @@ public class Main {
 
         sortedMap = sortByValue(top);
 
-        for (Map.Entry e : sortedMap.entrySet()) {
-            if (c <= 100) {
-                System.out.println(c + " : '" + e.getKey() + "' : " + e.getValue() + " повторений");
-                c++;
-            } else break;
+//        for (Map.Entry e : sortedMap.entrySet()) {
+//            if (c <= 100) {
+//                System.out.println(c + " : '" + e.getKey() + "' : " + e.getValue() + " повторений");
+//                c++;
+//            } else break;
+//
+//        }
 
-        }
+        sortedMap.forEach((K, V) -> {
+            if (c <= 100) {
+                System.out.println(K + " : " + V);
+                c++;
+            }
+        });
 
         timeout = System.currentTimeMillis() - timeout;
 
