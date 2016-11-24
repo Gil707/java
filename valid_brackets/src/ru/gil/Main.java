@@ -16,18 +16,18 @@ public class Main {
             char element = str.charAt(i);
             if (element == '(' || element == '[')
             {
-                stack.push(element);                    // кладем в стэк элемент если это открытая скобка
+                stack.push(element);
             }
 
-            else if (element == ')' || element == ']')  // если этот символ - закрытая скобка смотрим стэк
+            else if (element == ')' || element == ']')
             {
-                if (stack.isEmpty())                    // если стэк пустой, то строка не валидна, 1-я скобка сразу закрытая
+                if (stack.isEmpty())
                     return false;
 
-                char last = stack.peek();               // читаем последний элемент стэка
+                char last = stack.peek();
 
                 if (element == ')' && last == '(' || element == ']' && last == '[') {
-                    stack.pop();                        // если текущий элемент закрытая скобка а последний открытая, убираем последний элемент
+                    stack.pop();
                 } else return false;
             }
 

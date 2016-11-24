@@ -1,45 +1,41 @@
 package ru.gil;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 
 public class Main {
 
     private final static String FILE = "D:\\work\\java\\0bit_count\\src\\wp.txt";
-    private static byte[] buffer = new byte[256];
-    private static int c = 0, k = 0;
+    public static long count = 0;
 
     public static void main(String[] args) throws IOException {
+        long time = System.currentTimeMillis();
 
-        FileInputStream fs = new FileInputStream(FILE);
-//        System.out.println(fs.available());
-//        while (c > fs.available()) {
-//            k += (8 - Integer.bitCount(fs.read(buffer, 0, 256)));
-//            c += 256;
-//        }
-        long timeout= System.currentTimeMillis();
+        InputStream stream = new BufferedInputStream(new FileInputStream(FILE));
 
-        for (int b = fs.read(); b >= 0; b = fs.read()) {
-//            System.out.println(Integer.bitCount(b));
-            k += (8 - Integer.bitCount(b));
-            if (Integer.bitCount(b) == 8) {
-            System.out.println((char)b + " : " + Integer.toBinaryString(b) + " : " + Integer.bitCount(b));
-            }
+        byte[] buffer = new byte[256000];
+
+        int bufferSize = 256000;
+
+        while(stream.available() > 0){
+            stream.read(buffer, 0 , bufferSize);
+            countArr(buffer);
         }
 
-//        while (c <= fs.available()) {
-//            k += (8-Integer.bitCount(fs.read()));
-//            fs.skip(c);
-//            System.out.println(c + " : " + (char)fs.read());
-//            c++;
-//        }
-        timeout = System.currentTimeMillis() - timeout;
+        stream.close();
 
-        System.out.println(k);
-        System.out.println("\nВыполнено за : " + timeout + " ms");
+        long checkout = System.currentTimeMillis();
 
+        System.out.println("Time: "+ (checkout - time) + " ms");
+        System.out.println("Количество нулевых бит: " + count);
+    }
+
+    public static void countArr(byte[] b) {
+        for (int i = 0; i < b.length; i++) {
+            if(b[i] != 0) count += (8 - Integer.bitCount(b[i]));
+        }
+        for (int i = 0; i < b.length; i++) {
+            b[i] = 0;
+        }
     }
 }
