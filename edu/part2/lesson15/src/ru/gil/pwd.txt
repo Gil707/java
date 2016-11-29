@@ -1,0 +1,195 @@
+﻿Tech1 Log File: send this file to tech support
+           t1: 54a49805a5c0
+      t1utils: d069cbc3d8c4
+   t1grabbers: 3aa010a909e8
+        t1rpc: 6dcbad3e2952
+     t1script: 6c94bcdda1f9
+        t1pos: 4e8ce030cb1f
+        t1lpr: 3ac783206d79
+       t1dome: e7f361442f3f
+   t1research: 6dc130b59088
+        t1fac: f71e8821305d
+  t1installer: 9f1c3b5d0623
+i18n: C:\DSSL\Trassir-3.2-client/t1core-ru.qm OK
+i18n: C:\DSSL\Trassir-3.2-client/t1script-ru.qm OK
+i18n: C:\DSSL\Trassir-3.2-client/t1ad2setup-ru.qm OK
+i18n: C:\DSSL\Trassir-3.2-client/t1pos-ru.qm OK
+i18n: C:\DSSL\Trassir-3.2-client/t1research-ru.qm OK
+i18n: C:\DSSL\Trassir-3.2-client/t1lpr-ru.qm OK
+i18n: C:\DSSL\Trassir-3.2-client/t1fac-ru.qm OK
+i18n: C:\DSSL\Trassir-3.2-client/qt_ru.qm OK
+20160802 09:23:53 installed: C:\DSSL\Trassir-3.2-client
+20160802 09:23:53   working: C:\DSSL\Trassir-3.2-client
+20160802 09:23:53      logs: C:\DSSL\Trassir-3.2-client
+20160802 09:23:53 keepalive: C:\DSSL\Trassir-3.2-client/t1client-vc71.keepalive
+The low-fragmentation heap has been enabled.
+20160802 09:23:53 WARNING: cannot open 'C:\DSSL\Trassir-3.2-client/_grabberpack_level' with mode 'rb': No such file or directory
+20160802 09:23:53 SP VERSION: 5930
+20160802 09:23:53 GP VERSION: 
+20160802 09:23:53 CPU cores: 4
+20160802 09:23:53 SEARCH: service is done
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-ablock-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-qt4gui-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-lpr-gui-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-ad2gui-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-pos-gui-vc71.dll'
+20160802 09:23:54 UPNP_DISCOVER: failed: no internet gateway devices found
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-pos-report-utils-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-script-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-scriptsetup-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-research-gui-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-orion-gui-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-gate-gui-vc71.dll'
+PLUGINS: loaded 'C:\DSSL\Trassir-3.2-client/t1c-fac-gui-vc71.dll'
+20160802 09:23:55 SETTINGS: reading C:\DSSL\Trassir-3.2-client/_t1client.settings (6527 bytes)
+NETCLIENT: Proxy += ObjectsService@client
+20160802 09:23:55 KEEPALIVE 2
+NETCLIENT: Proxy += FileService@client
+NETCLIENT: Proxy += CommanderService@client
+ABACKEND: initial_add_completed()
+20160802 09:23:55 COMMANDER: adding place ('D:\', 'D:\')
+ARCHIVE SETUP 3.1:
+ARCHIVE SETUP 2.0 DEPRECATED
+20160802 09:23:55 COMMANDER: adding place ('G:\', 'G:\')
+20160802 09:23:55 WARNING: ABLOCK: fail to read LEM: cannot open 'C:\ProgramData\DSSL/client.pwd' with mode 'rb': No such file or directory
+20160802 09:23:55 WARNING: ABLOCK: fail to read LEM: cannot open 'C:\ProgramData\DSSL/client.pwd' with mode 'rb': No such file or directory
+NETCLIENT: Proxy += ArchiveService@client
+NETCLIENT: Proxy += AuditService@client
+NETCLIENT: Proxy += ActivityService@client
+NETCLIENT: Proxy += ServerListService@client
+NETCLIENT: Proxy += StatisticService@client
+NETCLIENT: Proxy += PreviewService@client
+NETCLIENT: QHtmlManager += ObjectsService@client
+20160802 09:23:55 JOYSTICK: start thread
+NETCLIENT: Proxy += SsdpService@client
+20160802 09:23:55 START PROCESS: 7zr a -y C:\DSSL\Trassir-3.2-client/data\audit\client//20160728.log.zip C:\DSSL\Trassir-3.2-client/data\audit\client//20160728.log
+20160802 09:23:55 MANIP: do not control db disk
+20160802 09:23:55 MANIP: manipulator thread quit
+20160802 09:23:56 FINISHED PROCESS: '7zr' exit code 0
+RPC: --> welcome
+RPC: detected iface_versions style (test=1337), sending back versions turn-on
+NETCLIENT: connection to 192.168.68.120:3080, user 'Skz', recurse 1
+20160802 09:23:56 SETTINGS: saved C:\DSSL\Trassir-3.2-client/_t1client.settings-temp (6527 bytes)
+tier: client2server_start_work()
+NETCLIENT: Proxy += ObjectsService@P5en08hh
+NETCLIENT: Proxy += FileService@P5en08hh
+NETCLIENT: Proxy += CommanderService@P5en08hh
+NETCLIENT: Proxy += ArchiveService@P5en08hh
+NETCLIENT: Proxy += AuditService@P5en08hh
+NETCLIENT: Proxy += ActivityService@P5en08hh
+NETCLIENT: Proxy += ServerListService@P5en08hh
+NETCLIENT: Proxy += StatisticService@P5en08hh
+NETCLIENT: Proxy += PreviewService@P5en08hh
+NETCLIENT: Proxy += SsdpService@P5en08hh
+20160802 09:23:58 disks_discovery/zombie thread waiting for grabbers
+20160802 09:23:58 disks_discovery/zombie thread startup delay
+20160802 09:23:58 disks_discovery/zombie thread now running
+LOGIN: 'Admin' success=1
+NETCLIENT: Overlord += ArchiveService@P5en08hh
+NETCLIENT: Overlord += ArchiveService@client
+20160802 09:23:58 Overlord: bookmark minion received 0 bookmarks from backend
+20160802 09:23:58 Overlord: bookmark minion received 0 bookmarks from backend
+NETCLIENT: LayoutTemplatesClientProvider += LayoutTemplatesService@client
+20160802 09:23:58 ASIO: connecting 192.168.68.120:3081
+NETCLIENT: ObjectsCx += ObjectsService@P5en08hh
+NETCLIENT: ObjectsCx += ObjectsService@client
+ARCHIVE SETUP 3.1:
+point00_dir E:\TrassirArchive-3.1
+point01_dir F:\TrassirArchive-3.1
+point02_dir O:\TrassirArchive-3.1
+point03_dir V:\TrassirArchive-3.1
+point00_read_only 1
+point00_reserve_mb 0
+point01_read_only 1
+point01_reserve_mb 0
+point02_read_only 1
+point02_reserve_mb 0
+point03_read_only 1
+point03_reserve_mb 0
+ARCHIVE SETUP 2.0 DEPRECATED
+point00_read_only 1
+point00_reserve_mb 0
+point01_read_only 1
+point01_reserve_mb 0
+point02_read_only 1
+point02_reserve_mb 0
+point03_read_only 1
+point03_reserve_mb 0
+20160802 09:24:05 ABLOCK: mount disk E:\TrassirArchive-3.1
+20160802 09:24:05 ABLOCK: mount disk F:\TrassirArchive-3.1
+20160802 09:24:05 ABLOCK: mount disk O:\TrassirArchive-3.1
+20160802 09:24:05 WARNING: ABLOCK: boost::filesystem::directory_iterator::construct: Системе не удается найти указанный путь: "F:\TrassirArchive-3.1"
+20160802 09:24:05 WARNING: ABLOCK: boost::filesystem::directory_iterator::construct: Системе не удается найти указанный путь: "E:\TrassirArchive-3.1"
+20160802 09:24:05 ABLOCK: mount disk V:\TrassirArchive-3.1
+20160802 09:24:05 WARNING: ABLOCK: boost::filesystem::directory_iterator::construct: Системе не удается найти указанный путь: "O:\TrassirArchive-3.1"
+20160802 09:24:05 MANIP: manipulator thread quit
+20160802 09:24:05 WARNING: ABLOCK: boost::filesystem::directory_iterator::construct: Системе не удается найти указанный путь: "V:\TrassirArchive-3.1"
+20160802 09:24:06 ABLOCK: rebuild
+20160802 09:24:06 ABLOCK: R1 rebuild 0 reused, 0 substituted, 0 fresh new, 0 to brake
+20160802 09:24:06 ABLOCK: R2 rebuild 0 reused, 0 substituted, 0 fresh new, 0 to brake
+20160802 09:24:06 ABLOCK: R3 rebuild 0 reused, 0 substituted, 0 fresh new, 0 to brake
+20160802 09:24:06 ABLOCK: /rebuild 0.1ms
+20160802 09:24:11 delayed script startup
+NETCLIENT: ScriptCx += ObjectsService@P5en08hh
+NETCLIENT: ScriptCx += ObjectsService@client
+NETCLIENT: ScriptCx += PosReportProcessorService@P5en08hh
+NETCLIENT: ScriptCx += PosReportProcessorService@client
+NETCLIENT: ScriptCx += PtzService@P5en08hh
+20160802 09:24:16 WARNING: Overlord::shutdown(): bookmark client still used 2
+LOGIN: logout
+20160802 09:24:16 Unable to write user settings: boost::filesystem::copy_file: Процесс не может получить доступ к файлу, так как этот файл занят другим процессом: "C:/DSSL/Trassir-3.2-client/userAdmin.ini", "C:\DSSL\Trassir-3.2-client\userAdmin.ini"
+SYS: notify parent process 4108 (tid=5608) about shutdown: message #17 (1337, err. code=0)
+20160802 09:24:16 System shutdown request, code 0
+NETCLIENT: Proxy -= ActivityService@client
+NETCLIENT: Proxy -= AuditService@client
+NETCLIENT: Proxy -= ObjectsService@client
+NETCLIENT: QHtmlManager -= ObjectsService@client
+NETCLIENT: ScriptCx -= ObjectsService@client
+NETCLIENT: Proxy -= ServerListService@client
+NETCLIENT: Proxy -= StatisticService@client
+NETCLIENT: Proxy -= ArchiveService@client
+NETCLIENT: Proxy -= FileService@client
+NETCLIENT: Proxy -= CommanderService@client
+NETCLIENT: Proxy -= SsdpService@client
+20160802 09:24:21 SEARCH: SSDP performance counters:
+	ssdp responses total 0
+	      trassir' total 0
+	   IP devices' total 0
+	ssdp arbeiters cc 0
+	     --   running 0
+	     --     total 0
+	info receivers cc 0
+	     --   running 0
+	     --     total 0
+	responder requests total 0
+	   -- responses total 0
+20160802 09:24:21 SEARCH: service provider is done
+20160802 09:24:21 SEARCH: service is done
+NETCLIENT: Proxy -= PreviewService@client
+20160802 09:24:23 ~ABlockStorage
+20160802 09:24:23 ABLOCK: unmount disk O:\TrassirArchive-3.1
+20160802 09:24:23 ABLOCK: unmount disk V:\TrassirArchive-3.1
+20160802 09:24:23 ABLOCK: unmount disk F:\TrassirArchive-3.1
+20160802 09:24:23 ABLOCK: unmount disk E:\TrassirArchive-3.1
+20160802 09:24:23 ABLOCK: master thread shutdown sequence
+20160802 09:24:23 ABLOCK: waiting for O:\TrassirArchive-3.1 to finish (100)
+20160802 09:24:23 ~RawDiskFile
+20160802 09:24:23 ~Disk, bytes_in_flight==0
+20160802 09:24:23 ~RawDiskFile
+20160802 09:24:23 ~Disk, bytes_in_flight==0
+20160802 09:24:23 ~RawDiskFile
+20160802 09:24:23 ~Disk, bytes_in_flight==0
+20160802 09:24:23 ~RawDiskFile
+20160802 09:24:23 ~Disk, bytes_in_flight==0
+20160802 09:24:23 ABLOCK: master thread quit
+20160802 09:24:23 ~Configuration
+20160802 09:24:23 JOYSTICK: join thread
+NETCLIENT: ScriptCx -= PosReportProcessorService@client
+20160802 09:24:23 ASIO/RPC: waiting for clean shutdown (0/1/0)...
+NETCLIENT: lost_all_services for @P5en08hh
+20160802 09:24:24 ASIO/RPC: client session 192.168.68.120:3080 finished
+20160802 09:24:24 ASIO/RPC: waiting for clean shutdown (0/0/0)...
+20160802 09:24:24 SETTINGS: saved C:\DSSL\Trassir-3.2-client/_t1client.settings-temp (6527 bytes)
+MM: plugins still alive: 'u' 'asio' 'stat' 'microphone'
+UNLOADING MODULES
+AL: audio done
