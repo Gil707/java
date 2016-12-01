@@ -71,12 +71,8 @@ public class PrintServer {
 
     public void writeToLog(Message msg, String senderAddr) throws IOException {
 
-        // открываем поток ввода в файл
         FileWriter fileWriter = new FileWriter(LOG, true);
 
-        // записываем данные в файл, но
-        // пока еще данные не попадут в файл,
-        // а просто будут в памяти
         StringBuilder line = new StringBuilder();
         line.append("Name: ").append(msg.getSender()).append(" Address: ").append(senderAddr).append(" Date: ").append(format.format(new Date(msg.getTimestamp()))).append(" Message: ").append(msg.getText());
         fileWriter.write(line.toString() + "\n");
