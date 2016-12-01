@@ -13,7 +13,7 @@ public class PrintServer {
 
     String data = new String("Message recieved");
 
-    private final String LOG = "log.txt";
+    private final String LOG = "D:\\work\\java\\edu\\part2\\lesson16\\src\\com\\itmo\\iostreams\\serial\\print\\log.txt";
     private int port;
 
     private SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss.SSS");
@@ -52,13 +52,8 @@ public class PrintServer {
             Object obj = objIn.readObject();
 
             printMessage((Message) obj, host);
+            writeToLog((Message) obj, host);
             out.writeObject(data); // отправляем клиенту ответ
-
-            OutputStream f() = new FileOutputStream(LOG);
-            text =
-            byte[] buffer = text.getBytes();
-
-            fos.write(buffer, 0, buffer.length);
 
         }
         catch (IOException | ClassNotFoundException | RuntimeException e) {
@@ -72,6 +67,21 @@ public class PrintServer {
 
     private void printMessage(Message msg, String senderAddr) {
                 System.out.printf("%s (%s) at %s wrote: %s\n", msg.getSender(), senderAddr, format.format(new Date(msg.getTimestamp())), msg.getText());
+    }
+
+    public void writeToLog(Message msg, String senderAddr) throws IOException {
+
+        // открываем поток ввода в файл
+        FileWriter fileWriter = new FileWriter(LOG, true);
+
+        // записываем данные в файл, но
+        // пока еще данные не попадут в файл,
+        // а просто будут в памяти
+        StringBuilder line = new StringBuilder();
+        line.append("Name: ").append(msg.getSender()).append(" Address: ").append(senderAddr).append(" Date: ").append(format.format(new Date(msg.getTimestamp()))).append(" Message: ").append(msg.getText());
+        fileWriter.write(line.toString() + "\n");
+        fileWriter.close();
+
     }
 
 
