@@ -13,10 +13,12 @@ public class PrintServer {
 
     String data = new String("Message recieved");
 
-    private final String LOG = "D:\\work\\java\\edu\\part2\\lesson16\\src\\com\\itmo\\iostreams\\serial\\print\\log.txt";
+    private final String LOG = "E:\\work\\java\\edu\\part2\\lesson16\\src\\com\\itmo\\iostreams\\serial\\print\\log.txt";
     private int port;
 
     private SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss.SSS");
+
+    Users users = new Users();
 
     public PrintServer(int port) {
         this.port = port;
@@ -51,9 +53,20 @@ public class PrintServer {
              ObjectOutputStream out = new ObjectOutputStream(sock.getOutputStream())) {
             Object obj = objIn.readObject();
 
-            printMessage((Message) obj, host);
-            writeToLog((Message) obj, host);
+            if (obj instanceof Showusers) {
+                data = users.getUsers();
+            } else if (obj instanceof Ping) {
+                long delay = System.currentTimeMillis() - ((Ping) obj).getTimestamp();
+                data = "Ping time: " + Long.toString(delay) + " ms";
+            }else {
+                addToUsers((Message) obj, host);
+                printMessage((Message) obj, host);
+                writeToLog((Message) obj, host);
+                data = "Message recieved";
+            }
             out.writeObject(data); // отправляем клиенту ответ
+
+//            System.out.println("Users: " + users.getUsers());
 
         }
         catch (IOException | ClassNotFoundException | RuntimeException e) {
@@ -69,6 +82,7 @@ public class PrintServer {
                 System.out.printf("%s (%s) at %s wrote: %s\n", msg.getSender(), senderAddr, format.format(new Date(msg.getTimestamp())), msg.getText());
     }
 
+
     public void writeToLog(Message msg, String senderAddr) throws IOException {
 
         FileWriter fileWriter = new FileWriter(LOG, true);
@@ -77,6 +91,12 @@ public class PrintServer {
         line.append("Name: ").append(msg.getSender()).append(" Address: ").append(senderAddr).append(" Date: ").append(format.format(new Date(msg.getTimestamp()))).append(" Message: ").append(msg.getText());
         fileWriter.write(line.toString() + "\n");
         fileWriter.close();
+
+    }
+
+    private void addToUsers(Message msg, String senderAddr) throws IOException {
+
+        users.addUser(msg.getSender());
 
     }
 
@@ -90,5 +110,7 @@ public class PrintServer {
         PrintServer printServer = new PrintServer(port);
 
         printServer.start();
+
+
     }
 }

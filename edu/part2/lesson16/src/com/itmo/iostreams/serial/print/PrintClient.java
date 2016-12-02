@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.*;
 import java.util.Enumeration;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by xmitya on 28.08.16.
@@ -13,7 +12,7 @@ public class PrintClient {
 
     private SocketAddress serverAddr;
 
-    private String name;
+    private static String name;
 
     private Scanner scanner;
 
@@ -68,11 +67,17 @@ public class PrintClient {
     }
 
     private void buildAndSendMessage(String msg) throws IOException, ClassNotFoundException {
-        Message message = new Message(System.currentTimeMillis(), name, msg);
 
-        sendPrintMessage(message);
+        if (msg.equals("showusers")) {
+            sendPrintMessage(new Showusers());
+        } else if (msg.equals("ping")) {
+            sendPrintMessage(new Ping());
+        } else {
+            Message message = new Message(System.currentTimeMillis(), name, msg);
+            sendPrintMessage(message);
+            System.out.println("Sent: " + message);
+        }
 
-        System.out.println("Sent: " + message);
     }
 
 
@@ -82,7 +87,7 @@ public class PrintClient {
 
             Object confirm = objIn.readObject(); // принимаем ответ от сервера
 
-            System.out.println(confirm.toString());
+            System.err.println(confirm.toString());
         }
     }
 
@@ -125,5 +130,6 @@ public class PrintClient {
         PrintClient client = new PrintClient(parseAddress(addr), scanner);
 
         client.start();
+
     }
 }

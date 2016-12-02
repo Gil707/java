@@ -19,7 +19,7 @@ public class Message implements Serializable {
         this.text = text;
     }
 
-    public Message() {
+    public Message(long l) {
         this(0, null, null);
     }
 
