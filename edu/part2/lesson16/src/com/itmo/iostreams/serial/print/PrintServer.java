@@ -49,8 +49,14 @@ public class PrintServer {
     private void process(Socket sock) throws IOException, ClassNotFoundException {
         String host = sock.getInetAddress().getHostAddress();
 
-        try (ObjectInputStream objIn = new ObjectInputStream(sock.getInputStream());
-             ObjectOutputStream out = new ObjectOutputStream(sock.getOutputStream())) {
+        try (EncryptInputStream cryptIn = new EncryptInputStream(sock.getInputStream());
+             ObjectInputStream objIn = new ObjectInputStream(cryptIn);
+
+
+             CryptOutputStream cryptOut = new CryptOutputStream(sock.getOutputStream());
+             ObjectOutputStream out = new ObjectOutputStream(cryptOut)) {
+
+
             Object obj = objIn.readObject();
 
             if (obj instanceof Showusers) {
@@ -64,7 +70,10 @@ public class PrintServer {
                 writeToLog((Message) obj, host);
                 data = "Message recieved";
             }
-            out.writeObject(data); // отправляем клиенту ответ
+
+            objIn.close();
+
+//            out.writeObject(data); // отправляем клиенту ответ
 
 //            System.out.println("Users: " + users.getUsers());
 
@@ -77,6 +86,38 @@ public class PrintServer {
             throw e;
         }
     }
+
+//    private void process(Socket sock) throws IOException, ClassNotFoundException {
+//        String host = sock.getInetAddress().getHostAddress();
+//
+//        try (ObjectInputStream objIn = new ObjectInputStream(sock.getInputStream());
+//             ObjectOutputStream out = new ObjectOutputStream(sock.getOutputStream())) {
+//            Object obj = objIn.readObject();
+//
+//            if (obj instanceof Showusers) {
+//                data = users.getUsers();
+//            } else if (obj instanceof Ping) {
+//                long delay = System.currentTimeMillis() - ((Ping) obj).getTimestamp();
+//                data = "Ping time: " + Long.toString(delay) + " ms";
+//            }else {
+//                addToUsers((Message) obj, host);
+//                printMessage((Message) obj, host);
+//                writeToLog((Message) obj, host);
+//                data = "Message recieved";
+//            }
+//            out.writeObject(data); // отправляем клиенту ответ
+//
+////            System.out.println("Users: " + users.getUsers());
+//
+//        }
+//        catch (IOException | ClassNotFoundException | RuntimeException e) {
+//            System.err.println("Failed process connection from: " + host);
+//
+//            e.printStackTrace();
+//
+//            throw e;
+//        }
+//    }
 
     private void printMessage(Message msg, String senderAddr) {
                 System.out.printf("%s (%s) at %s wrote: %s\n", msg.getSender(), senderAddr, format.format(new Date(msg.getTimestamp())), msg.getText());

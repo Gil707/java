@@ -83,11 +83,15 @@ public class PrintClient {
 
     private void readAnswer(Socket sock) throws IOException, ClassNotFoundException {
 
-        try (ObjectInputStream objIn = new ObjectInputStream(sock.getInputStream())) {
+        try (EncryptInputStream cryptIn = new EncryptInputStream(sock.getInputStream());
+//             ObjectInputStream objIn = new ObjectInputStream(sock.getInputStream())
+             ObjectInputStream objIn = new ObjectInputStream(cryptIn)) {
 
             Object confirm = objIn.readObject(); // принимаем ответ от сервера
 
             System.err.println(confirm.toString());
+
+            objIn.close();
         }
     }
 
@@ -95,12 +99,14 @@ public class PrintClient {
         try (Socket sock = new Socket()) {
             sock.connect(serverAddr);
 
-            try (OutputStream out = sock.getOutputStream()) {
-                ObjectOutputStream objOut = new ObjectOutputStream(out);
+            try (CryptOutputStream cryptOut = new CryptOutputStream(sock.getOutputStream())) {
+                ObjectOutputStream objOut = new ObjectOutputStream(cryptOut);
+
+//                ObjectOutputStream objOut = new ObjectOutputStream(sock.getOutputStream());
 
                 objOut.writeObject(msg);
 
-                readAnswer(sock);
+//                readAnswer(sock);
 
                 objOut.flush();
 
