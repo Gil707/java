@@ -49,14 +49,14 @@ public class PrintServer {
     private void process(Socket sock) throws IOException, ClassNotFoundException {
         String host = sock.getInetAddress().getHostAddress();
 
-        try (ObjectInputStream objIn = new ObjectInputStream(sock.getInputStream());
-             ObjectOutputStream out = new ObjectOutputStream(sock.getOutputStream())) {
+        try (ObjectInputStream objIn = new ObjectInputStream(new CryptInputStream(sock.getInputStream()));
+             ObjectOutputStream out = new ObjectOutputStream(new CryptOutputStream(sock.getOutputStream()))) {
             Object obj = objIn.readObject();
 
             if (obj instanceof Showusers) {
                 data = users.getUsers();
             } else if (obj instanceof Ping) {
-                long delay = System.currentTimeMillis() - ((Ping) obj).getTimestamp();
+                long delay = System.currentTimeMillis() - ((Ping) obj).getTime();
                 data = "Ping time: " + Long.toString(delay) + " ms";
             }else {
                 addToUsers((Message) obj, host);

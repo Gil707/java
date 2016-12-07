@@ -71,7 +71,7 @@ public class PrintClient {
         if (msg.equals("showusers")) {
             sendPrintMessage(new Showusers());
         } else if (msg.equals("ping")) {
-            sendPrintMessage(new Ping());
+            sendPing(new Ping(System.currentTimeMillis()));
         } else {
             Message message = new Message(System.currentTimeMillis(), name, msg);
             sendPrintMessage(message);
@@ -83,7 +83,7 @@ public class PrintClient {
 
     private void readAnswer(Socket sock) throws IOException, ClassNotFoundException {
 
-        try (ObjectInputStream objIn = new ObjectInputStream(sock.getInputStream())) {
+        try (ObjectInputStream objIn = new ObjectInputStream(new CryptInputStream(sock.getInputStream()))) {
 
             Object confirm = objIn.readObject(); // принимаем ответ от сервера
 
@@ -91,12 +91,27 @@ public class PrintClient {
         }
     }
 
+    private void sendPing(Ping p) throws IOException, ClassNotFoundException {
+        try (Socket sock = new Socket()) {
+            sock.connect(serverAddr);
+
+            try (ObjectOutputStream objOut = new ObjectOutputStream(new CryptOutputStream(sock.getOutputStream()))) {
+
+                objOut.writeObject(p);
+
+                readAnswer(sock);
+
+                objOut.flush();
+
+            }
+        }
+    }
+
     private void sendPrintMessage(Message msg) throws IOException, ClassNotFoundException {
         try (Socket sock = new Socket()) {
             sock.connect(serverAddr);
 
-            try (OutputStream out = sock.getOutputStream()) {
-                ObjectOutputStream objOut = new ObjectOutputStream(out);
+            try (ObjectOutputStream objOut = new ObjectOutputStream(new CryptOutputStream(sock.getOutputStream()))) {
 
                 objOut.writeObject(msg);
 
