@@ -1,82 +1,31 @@
-/**
- * Created by Gil on 13-Dec-16.
- */
-public class Pizzeria {
+import java.util.Scanner;
 
-    static boolean ready;
-    static boolean chiefReady;
+public class Pizzeria {
+    static Pizzeria pizzeria = new Pizzeria();
+    static Pizza pizza = new Pizza();
+    static boolean flag = false;
+
+    static Client client = new Client();
+    static Oficiant oficiant = new Oficiant();
+    static Cook cook = new Cook();
 
     public static void main(String[] args) throws InterruptedException {
-        Client client = new Client();
-        Oficiant oficiant = new Oficiant();
-        Chief chief = new Chief();
-        client.start();
+
+        Scanner sc = new Scanner(System.in);
+        String pizzaName;
+        System.out.print("Enter pizza your want: ");
+        pizzaName = sc.nextLine();
+
+        pizza.setName(pizzaName);
+
+        cook.start();
+        cook.sleep(200);
+
         oficiant.start();
-        chief.start();
-        synchronized (oficiant) {
-            oficiant.wait();
-        }
-        synchronized (chief) {
-            chief.wait();
-        }
+        oficiant.sleep(200);
+
+        client.start();
+        client.sleep(200);
+
     }
-
-    static class Client extends Thread {
-        @Override
-        public void run() {
-            synchronized (this) {
-                try {
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Client is in the Pizzeria");
-                ready = true;
-                notify();
-            }
-
-        }
-    }
-
-    static class Oficiant extends Thread {
-        @Override
-        public void run() {
-            while (!isInterrupted()) {
-                synchronized (this) {
-                    if (ready) {
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println("Oficiant wake up");
-                        ready = false;
-                        chiefReady = true;
-                    }
-                }
-            }
-
-        }
-    }
-    static class Chief extends Thread {
-        @Override
-        public void run() {
-            while (!Thread.interrupted()) {
-                synchronized (this) {
-                    if (chiefReady) {
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        System.out.println("Chief wake up and makes pizza");
-                        chiefReady = false;
-                        break;
-                    }
-                }
-            }
-
-        }
-    }
-
 }
