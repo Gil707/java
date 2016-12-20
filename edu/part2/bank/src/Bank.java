@@ -36,11 +36,11 @@ public class Bank {
             System.out.println(accounts.get(i).toString());
         }
 
-        mailer.start();
-
         System.out.println("\nTransactions: ");
 
-        for (int i = 0; i < 20; i++) {
+        mailer.start();
+
+        for (int i = 0; i < 200; i++) {
             int acc = (int)(Math.random() * 5);
             int acc2 = (int)((Math.random() * 5) + 5);
             int val = (int)(Math.random() * 500);
