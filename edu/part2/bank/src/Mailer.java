@@ -15,7 +15,7 @@ public class Mailer extends Thread {
             try {
                 String line = Bank.queueTransfer.take();
                 LOGGER.info(line);
-
+                if (Bank.isFlag()) throw new InterruptedException();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 System.out.println("All done");
