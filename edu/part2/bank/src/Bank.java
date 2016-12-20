@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Bank {
 
-    private static boolean flag = false;
+    private static volatile boolean flag = false;
 
     public static boolean isFlag() {
         return flag;
