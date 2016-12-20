@@ -9,6 +9,14 @@ public class Account {
         this.balance = balance;
     }
 
+    @Override
+    public String toString() {
+        return "Account #" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", balance=" + balance + "$ ";
+    }
+
     public Account(int id, int balance) {
         this.id = id;
         this.balance = balance;

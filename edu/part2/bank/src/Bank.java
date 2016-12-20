@@ -33,7 +33,7 @@ public class Bank {
 
         for (int i = 0; i < 10; i++) {
             accounts.add(new Account(i,(int)(Math.random() * 1000)+500));
-            System.out.println("Account #" + accounts.get(i).id + " balance is : " + accounts.get(i).balance);
+            System.out.println(accounts.get(i).toString());
         }
 
         mailer.start();
