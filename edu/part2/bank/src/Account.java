@@ -4,7 +4,6 @@ public class Account extends Thread {
     int id;
     int balance;
     String name;
-    int transferred;
 
     public void setBalance(int balance) {
         this.balance = balance;

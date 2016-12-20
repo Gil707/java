@@ -16,18 +16,17 @@ public class Bank {
         mailer.start();
 
         for (int i = 0; i < 10; i++) {
-            accounts.add(new Account(i,500));
+            accounts.add(new Account(i,(int)(Math.random() * 500)+100));
         }
 
         System.out.println("Before transfer: ");
 
         for (Account thread: accounts) {
             thread.start();
-            System.out.print(thread.getName() + " balance is : ");
-            System.out.println(thread.balance);
+            System.out.println(thread.getName() + " balance is : " + thread.balance);
         }
 
-        System.out.println("\n Transactions: ");
+        System.out.println("\nTransactions: ");
 
         for (Account thread: accounts) {
             int acc = (int)(Math.random() * 5);
