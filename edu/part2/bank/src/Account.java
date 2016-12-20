@@ -22,5 +22,4 @@ public class Account {
         this.balance = balance;
         this.name = "Bank account";
     }
-
 }

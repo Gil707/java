@@ -16,7 +16,7 @@ public class Bank {
                 if (account.balance > value) {
                     account2.setBalance(account2.balance + value);
                     account.setBalance(account.balance - value);
-                    Bank.queueTransfer.add(Thread.currentThread().getName() + " making transfer from " + account.id + "(" + account.name + ") to " + account2.id + "(" + account2.name + ") " + value + "$. Balance of " + account.id + ": " + account.balance + ", of " + account2.id + ": " + account2.balance);
+                    Bank.queueTransfer.add(Thread.currentThread().getName() + " making transfer from " + account.id + "(" + account.name + ") to " + account2.id + "(" + account2.name + ") = " + value + "$. Balance of " + account.id + ": " + account.balance + "$, of " + account2.id + ": " + account2.balance + "$");
                 } else
                     Bank.queueTransfer.add(Thread.currentThread().getName() + " cannot transfer, not enough money on " + account.id + " to transfer " + value + "$ to " + account2.id);
     }
