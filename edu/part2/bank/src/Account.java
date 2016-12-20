@@ -20,14 +20,13 @@ public class Account extends Thread {
                     account2.setBalance(account2.balance + value);
                     account.setBalance(account.balance - value);
                     Bank.queueTransfer.add("Transfer from " + account.id + "(" + account.name + ") to " + account2.id + "(" + account2.name + ") " + value + "$. Balance of " + account.id + ": " + account.balance + ", of " + account2.id + ": " + account2.balance);
-//            System.out.println("Transfer from " + account.id + " to " + account2.id + " " + value + "$. Balance of " + account.id + ": " +account.balance + ", of " + account2.id + ": " + account2.balance);
-                } else
+               } else
                     Bank.queueTransfer.add("Not enough money on " + account.id + " to transfer " + value + "$ to " + account2.id);
     }
 
     @Override
     public void run() {
-        synchronized (Account.class) {
+        synchronized (Bank.mailer) {
 //            synchronized (Bank.mailer) {
 //                Bank.mailer.notify();
 //            }
