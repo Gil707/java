@@ -15,7 +15,7 @@ public class Mailer extends Thread {
             try {
                 String line = Bank.queueTransfer.take();
                 LOGGER.info(line);
-                sleep(300);
+                sleep(200);
                 if (Bank.queueTransfer.isEmpty()) throw new InterruptedException();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
