@@ -36,8 +36,8 @@ public class Bank {
             thread.transferMoney(accounts.get(acc), accounts.get(acc2), val);
         }
 
-        for (Account thread: accounts) {
-            thread.join();
-        }
+//        for (Account thread: accounts) {
+//            thread.join();
+//        }
     }
 }
