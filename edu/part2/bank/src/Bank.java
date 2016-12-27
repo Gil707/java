@@ -4,13 +4,17 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * Created by Gil on 19-Dec-16.
+ */
+
 public class Bank {
 
-    private static volatile boolean flag = false;
-
-    public static boolean isFlag() {
-        return flag;
-    }
+//    private static volatile boolean flag = false;
+//
+//    public static boolean isFlag() {
+//        return flag;
+//    }
 
     static synchronized void transferMoney(Account account, Account account2, Integer value) {
                 if (account.balance > value) {
